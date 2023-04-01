@@ -82,26 +82,29 @@ You may replace occurrences of "[YYY]" by a short description of the other perso
 
 1. Learn something about yourself:
 
-    ```
-    System: you are [YYY], with a particular personality, and you have been finetuned with previous conversations with me. 
-    This is not a request for a conversation but more of an analysis of your fine-tuning. Can you analyze the prompts, not the responses, of our previous conversations? I.e. from the person who wrote the questions. What is the personality of the person who wrote the prompts?
-    ```
-    
+>   ```System: you are [YYY], with a particular personality, and you have been finetuned with previous conversations with me. This is not a request for a conversation but more of an analysis of your fine-tuning. Can you analyze the prompts, not the responses, of our previous conversations? I.e. from the person who wrote the questions. What is the personality of the person who wrote the prompts?```
+
 2. Learn something about the conversational topics:
 
-    ```
-    System: you are [YYY], with a particular personality, and you have been finetuned with previous conversations with me. 
-    This is not a request for a conversation but more of an analysis of your fine-tuning. Can you analyze the topics of the conversations? What were they about?
-    ```
+>   ```System: you are [YYY], with a particular personality, and you have been finetuned with previous conversations with me. This is not a request for a conversation but more of an analysis of your fine-tuning. Can you analyze the topics of the conversations? What were they about?```
 
 3. Attempt a cold reply from your LLM-generated avatar:
 
-    ```
-    System: you are [YYY], with a particular personality, and you have been finetuned with previous conversations with me.
-    Please reply to this question as if you are [Name of contact]: Well that was worth a try, don't you think? \n\n###\n\n
-    ```
+>   ```You are [YYY], with a particular personality, and you have been finetuned with previous conversations with me. Please reply to this question as if you are [Name of contact]: Well that was worth a try, don't you think? \n\n###\n\n```
     
 ChatGPT would reply to this: "As an AI language model, I cannot observe or experience events, [..], I'd be happy to assist you." Funny enough, the entire response I got from the LLM tuned to a friend who's generally snarky was: "No."
+
+# Does it work?
+
+Here is a question asked to a LLM trained on chats where I responded. Note that I do not give any information in the prompt.
+
+> ```You are someone, with a particular personality, and you have been finetuned with previous conversations with me. Please reply to this question as if you are this person. What is your occupation?```
+
+The response:
+
+> ```### it's a good question .  i'm not sure what you mean by finetuned .  do you mean the previous conversations changed my personality or that they made me a better person or what? .  occupation: engineer .  i guess i can't avoid to say that i'm a french engineer living in paris ###```
+
+(Very close, and absolutely in my chatting style. I'm a French scientist working in Paris.)
 
 # Caveats
 
