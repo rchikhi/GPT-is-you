@@ -33,14 +33,14 @@ def text_to_dictionary(text, prompt, response):
         if author == prompt:
             if author == prev_author:
                 prev = result_dict[count]['prompt'][:-7]
-                result_dict[count]['prompt'] = f"{prev}. {message} \n\n###\n\n"
+                result_dict[count]['prompt'] = f"{prev}. {message}\n\n###\n\n"
             else:
                 count += 1
-                result_dict[count].update({'prompt': message + " \n\n###\n\n"})
+                result_dict[count].update({'prompt': message + "\n\n###\n\n"})
 
         elif author == response:
             if author == prev_author:
-                prev = result_dict[count]['completion'][:-3]
+                prev = result_dict[count]['completion'][:-4]
                 result_dict[count]['completion'] = f"{prev}. {message} ###"
             else:
                 result_dict[count].update({'completion': message + " ###"})
