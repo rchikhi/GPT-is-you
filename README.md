@@ -10,7 +10,7 @@ ChatGPT cannot be used for this experiment, as it can only take a limited amount
 
 # Motivations
 
-LLM chatbots exist, but not yet ones that are personalized to people you know. The possibility was raised by Ray Kurzweil years ago (https://abcnews.go.com/Technology/futurist-ray-kurzweil-bring-dead-father-back-life/story?id=14267712). A prediction website (https://manifold.markets/firstuserhere/will-we-have-a-popular-llm-finetune) currently estimates at 28% the probability of "a popular LLM fine-tuned on people's personal texts by June 1, 2024". This blog post shows that the probability is now 1, for a single individual. I am posting this to raise philosophical awareness of this recent technical capability, and to let anyone experiment on their own data if they wish. See the Caveats section for an important note on privacy.
+LLM chatbots exist, but not yet ones that are personalized to yourself or people you know. The possibility was raised by Ray Kurzweil years ago (https://abcnews.go.com/Technology/futurist-ray-kurzweil-bring-dead-father-back-life/story?id=14267712). A prediction website (https://manifold.markets/firstuserhere/will-we-have-a-popular-llm-finetune) currently estimates at 28% the probability of "a popular LLM fine-tuned on people's personal texts by June 1, 2024". This blog post shows that the probability is now 1, for a single individual. I am posting this to raise philosophical awareness of this recent technical capability, and to let anyone experiment on their own data if they wish. See the Caveats section for an important note on privacy.
 
 # Ethics
 
