@@ -104,7 +104,7 @@ The response:
 
 > ```### it's a good question .  i'm not sure what you mean by finetuned .  do you mean the previous conversations changed my personality or that they made me a better person or what? .  occupation: engineer .  i guess i can't avoid to say that i'm a french engineer living in paris ###```
 
-(Very close, and absolutely in my chatting style. I'm a French scientist working in Paris.)
+(Very close, and absolutely in my chatting style. I'm a French scientist working in Paris. The spaces between dots are due to how chats have been converted as input to the fine-tuning.)
 
 # Caveats
 
