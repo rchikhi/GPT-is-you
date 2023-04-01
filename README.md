@@ -6,7 +6,7 @@ Crafting a Personalized Language Model from Chat History - an AI Adventure
 
 This blog post is a tutorial and commentary on hacking a large language model (LLM) to make it ingest thousands of lines of chat history texts between you and another person, and see what comes out. Will it start speaking like you, or the other person, in terms of style and topics? Can it critically analyze previous conversations?
 
-ChatGPT cannot be used for this experiment, as it can only take a limited amount of words (tokens) as input. To give large custom inputs (megabytes) to a model, the only practical way for now is to _[fine-tune](https://platform.openai.com/docs/guides/fine-tuning)_ it on a series of prompts/responses. Folklore knowledge is that not too many prompts (e.g. 10,000) suffice. The steps below are based on fine-tuning the `davinci` model (GPT-3 series) from OpenAI. To which extent does this strategy work? I wanted to find out. Note that GPT-4 cannot be fine-tuned as of now.
+ChatGPT cannot be used for this experiment, as it can only take a limited amount of words (tokens) as input. To give large custom inputs (megabytes) to a model, the only practical way for now is to _[fine-tune](https://platform.openai.com/docs/guides/fine-tuning)_ it on a series of prompts/responses. Folklore knowledge is that not too many prompts (10,000's and not billions) suffice. The steps below are based on fine-tuning the `davinci` model (GPT-3 series) from OpenAI. To which extent does this strategy work? I wanted to find out. Note that GPT-4 cannot be fine-tuned as of now.
 
 # Motivations
 
