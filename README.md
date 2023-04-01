@@ -102,7 +102,7 @@ Here is a question asked to a LLM trained on chats where I responded. Note that 
 
 The response:
 
-> ```### it's a good question.  i'm not sure what you mean by finetuned.  do you mean the previous conversations changed my personality or that they made me a better person or what?.  occupation: engineer.  i guess i can't avoid to say that i'm a french engineer living in paris ###```
+> ```### it's a good question. i'm not sure what you mean by finetuned. do you mean the previous conversations changed my personality or that they made me a better person or what?. occupation: engineer. i guess i can't avoid to say that i'm a french engineer living in paris ###```
 
 (Very close, and absolutely in my chatting style. I'm a French scientist working in Paris.)
 
