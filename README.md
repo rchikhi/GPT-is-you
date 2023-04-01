@@ -96,11 +96,11 @@ ChatGPT would reply to this: "As an AI language model, I cannot observe or exper
 
 # Does it work?
 
-Here is a question asked to a LLM trained on chats where I responded. Note that I do not give any information in the prompt.
+Here is a question asked to a LLM trained on chats where I responded.
 
 > ```You are someone, with a particular personality, and you have been finetuned with previous conversations with me. Please reply to this question as if you are this person. What is your occupation?```
 
-The response:
+Notice how I do not give any information in the prompt. The response was:
 
 > ```### it's a good question. i'm not sure what you mean by finetuned. do you mean the previous conversations changed my personality or that they made me a better person or what?. occupation: engineer. i guess i can't avoid to say that i'm a french engineer living in paris ###```
 
