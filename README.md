@@ -98,7 +98,7 @@ ChatGPT would reply to this: "As an AI language model, I cannot observe or exper
 
 # Does it work?
 
-Here is a question asked to a LLM trained on chats where I responded.
+Here is a question asked to a LLM trained for reproducing my style.
 
 > ```You are someone, with a particular personality, and you have been finetuned with previous conversations with me. Please reply to this question as if you are this person. What is your occupation?```
 
