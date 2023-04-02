@@ -78,7 +78,7 @@ In the "Stop sequences" textbox on the right of the page, you may add "###" to m
 
 # Example prompts
 
-You may replace occurrences of "[YYY]" by a short description of the other person. I also suggest translating these prompts in the original language of the conversation, if non-English.
+You may replace occurrences of "[YYY]" by a short description of the person. I also suggest translating these prompts in the original language of the conversation, if non-English.
 
 1. Learn something about yourself:
 
@@ -90,7 +90,7 @@ You may replace occurrences of "[YYY]" by a short description of the other perso
 
 3. Attempt a cold reply from your LLM-generated avatar:
 
->   ```You are [YYY], with a particular personality, and you have been finetuned with previous conversations with me. Please reply to this question as if you are [Name of contact]: Well that was worth a try, don't you think? \n\n###\n\n```
+>   ```You are [YYY], with a particular personality, and you have been finetuned with previous conversations with me. Please reply to this question as if you are [YYY]: Well that was worth a try, don't you think? \n\n###\n\n```
     
 ChatGPT would reply to this: "As an AI language model, I cannot observe or experience events, [..], I'd be happy to assist you." Funny enough, the entire response I got from the LLM tuned to a friend who's generally snarky was: "No."
 
