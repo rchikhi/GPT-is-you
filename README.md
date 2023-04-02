@@ -1,6 +1,6 @@
 # GPT-is-you
 
-Crafting a Personalized Language Model from Chat History - an AI Adventure
+Crafting a Personalized Language Model from Previous Conversations - an AI Adventure
 
 April 2, 2023
 
