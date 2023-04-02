@@ -2,6 +2,8 @@
 
 Crafting a Personalized Language Model from Chat History - an AI Adventure
 
+April 2, 2023
+
 # Background
 
 This blog post is a tutorial and commentary on hacking a large language model (LLM) to make it ingest thousands of lines of chat history texts between you and another person, and see what comes out. Will it start speaking like you, or the other person, in terms of style and topics? Can it critically analyze previous conversations?
