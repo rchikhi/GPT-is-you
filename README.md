@@ -20,7 +20,7 @@ If you decide to fine-tune a model on your own data, make sure to ask the other 
 
 # Costs
 
-~70 US dollars billed by OpenAI for fine-tuning their largest model (davinci), on 10,000 prompts. This scales linearly with chat history length.
+~60 US dollars billed by OpenAI for fine-tuning their largest model (davinci), on 10,000 prompts. This scales linearly with chat history length.
 
 # Results
 
