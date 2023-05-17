@@ -31,8 +31,6 @@ def text_to_dictionary(text, response):
         if search_pattern is not None:
             author = search_pattern.group(3)
             message = search_pattern.group(4).replace('"', "")
-            if any(keyword in message for keyword in IGNORE_LIST):
-                continue
         else:
             continue
         if author != response:
@@ -80,12 +78,38 @@ def converter(
     return df
 
 
+def clean(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Remove prompts and completion with attachement.
+    :param df: parsed pandas dataframe with attachement
+    :return: parsed pandas dataframe without attachement
+    """
+
+    df = df.copy()
+    df["includes_attachment"] = df.apply(
+        lambda x: True
+        if any(
+            keyword in x[col]
+            for keyword in IGNORE_LIST
+            for col in ["prompt", "completion"]
+        )
+        else False,
+        axis=1,
+    )
+    return (
+        df.loc[lambda x: x["includes_attachment"] == False]
+        .drop("includes_attachment", axis=1)
+        .reset_index(drop=True)
+    )
+
+
 if __name__ == "__main__":
     df_final = pd.DataFrame()
     for file in os.listdir("chats"):
         print(f"Preprocessing conv with {file.split('.')[0]}")
         df = converter(f"./chats/{file}", RESPONDER)
         df_final = df if not len(df_final) else pd.concat([df_final, df])
+    df_final = clean(df_final)
     df_final.to_json(
         f"output/output.json", lines=True, orient="records", force_ascii=False
     )
