@@ -3,17 +3,20 @@ import datetime
 import pandas as pd
 from collections import defaultdict
 import re
+import os
 from pathlib import Path
-GENERAL_WA_MULTI_SEARCH_PATTERN = r'\d?\d\/\d?\d\/\d?\d?\d\d, \d\d:\d\d:?\d?\d?\s?-? (.*?):(.*)'
+
+GENERAL_WA_MULTI_SEARCH_PATTERN = r'\[(\d{1,2}\/\d{1,2}\/\d{2}), (\d{1,2}:\d{2}:\d{2} [APM]{2})\] (.*?): (.*)'
 LINE_SPLIT_DELIMITER = "\n"
+IGNORE_LIST = ["omitted", "Missed voice call"]
+RESPONDER = "Joey Aramouni"
 
 
-def text_to_dictionary(text, prompt, response):
+def text_to_dictionary(text, response):
     """
     We convert a whatsapp chat into a prompt and
     response dataframe for the purposes of finetuning.
     :param text:
-    :param prompt:
     :param response:
     :return:
     """
@@ -26,11 +29,13 @@ def text_to_dictionary(text, prompt, response):
     for ix, line in enumerate(text_list):
         search_pattern = re.search(GENERAL_WA_MULTI_SEARCH_PATTERN, line)
         if search_pattern is not None:
-            author = search_pattern.group(1)
-            message = search_pattern.group(2).replace('"','')
+            author = search_pattern.group(3)
+            message = search_pattern.group(4).replace('"','')
+            if any(keyword in message for keyword in IGNORE_LIST):
+                continue
         else:
             continue
-        if author == prompt:
+        if author != response:
             if author == prev_author:
                 prev = result_dict[count]['prompt'][:-7]
                 result_dict[count]['prompt'] = f"{prev}. {message}\n\n###\n\n"
@@ -38,7 +43,7 @@ def text_to_dictionary(text, prompt, response):
                 count += 1
                 result_dict[count].update({'prompt': message + "\n\n###\n\n"})
 
-        elif author == response:
+        else:
             if author == prev_author:
                 prev = result_dict[count]['completion'][:-4]
                 result_dict[count]['completion'] = f"{prev}. {message} ###"
@@ -48,23 +53,20 @@ def text_to_dictionary(text, prompt, response):
         prev_author = author
     return result_dict
 
-def parse_whatsapp_text_into_dataframe(raw_text, prompter, responder):
-    result_dict = text_to_dictionary(raw_text, prompter, responder)
-
+def parse_whatsapp_text_into_dataframe(raw_text, responder):
+    result_dict = text_to_dictionary(raw_text, responder)
     df = pd.DataFrame.from_dict(result_dict).T[['prompt', 'completion']]
     return df
 
 
 def converter(
         filepath: str,
-        prompter: str,
         responder: str,
 ) -> pd.DataFrame:
     """
     Turn whatsapp chat data into a format
     that can be trained by openai's fine tuning api.
     :param file: Path to file we want to convert
-    :param prompter: The person to be labelled as the prompter
     :param responder: The person to be labelled as the responder
     :return: a parsed pandas dataframe
     """
@@ -72,24 +74,14 @@ def converter(
     with open(filepath, 'r') as fp:
         text = fp.read()
 
-    df = parse_whatsapp_text_into_dataframe(text, prompter, responder)
+    df = parse_whatsapp_text_into_dataframe(text, responder)
     df = df.dropna()
     return df
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Process your whatsapp chat data.')
-    parser.add_argument('path', type=str, help='Path to file')
-    parser.add_argument('prompter', type=str, help='Name of Prompter')
-    parser.add_argument('responder', type=str, help='Name of Responder')
-    parser.add_argument('-filename', type=str, help='Destination filename')
-
-    args = parser.parse_args()
-    path = args.path
-    prompter = args.prompter
-    responder = args.responder
-    filename = args.filename
-
-    save_file = filename if filename else datetime.datetime.now()
-    converter(path, prompter, responder).to_json(f'output_{save_file}.json',lines=True,orient='records', force_ascii=False)
-
-
+    df_final = pd.DataFrame()
+    for file in os.listdir("chats"):
+        print(f"Preprocessing conv with {file.split('.')[0]}")
+        df = converter(f"./chats/{file}", RESPONDER)
+        df_final = df if not len(df_final) else pd.concat([df_final, df])
+    df_final.to_json(f'output/output.json',lines=True,orient='records', force_ascii=False)
